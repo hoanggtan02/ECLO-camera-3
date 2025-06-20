@@ -85,6 +85,51 @@
                         'trash'          =>$jatbi->lang("Thùng rác"),
                     ]
                 ],
+                'camera'=>[
+                        "menu"=>$jatbi->lang("Danh sách nhận diện"),
+                        "url"=>'/camera',
+                        "icon"=>'<i class="ti ti-user "></i>',
+                        "sub"=>[
+                            'rec'   => [
+                                "name"  => $jatbi->lang("Nhân viên"),
+                                "router"    => '/camera/rec',
+                                "icon"  => '<i class="fas fa-ban"></i>',
+                            ],
+                            'snap'  => [
+                                "name"  => $jatbi->lang("Người lạ"),
+                                "router"    => '/camera/snap',
+                                "icon"  => '<i class="fa fa-list-alt"></i>',
+                            ],
+                        ],
+                        "controllers"=>"controllers/core/camera.php",
+                        "main"=>'false',
+                        "permission"=>[
+                            'camera'       =>$jatbi->lang("Camera"),
+                            'rec'       =>$jatbi->lang("Danh sách nhận diện nhân viên"),
+                            'snap'       =>$jatbi->lang("Danh sách nhận diện người lạ"),
+
+                        ]
+                    ],
+                    'employee'=>[
+                        "menu"=>$jatbi->lang("Nhân viên"),
+                        "url"=>'/employee',
+                        "icon"=>'<i class="ti ti-user "></i>',
+                        "controllers"=>"controllers/core/employee.php",
+                        "main"=>'false',
+                        "permission"=>[
+                            'employee'       =>$jatbi->lang("Nhân viên"),
+                        ]
+                    ],
+                    'webhook'=>[
+                        "menu"=>$jatbi->lang("Webhook"),
+                        "url"=>'/webhook',
+                        "icon"=>'<i class="ti ti-user "></i>',
+                        "controllers"=>"controllers/core/webhook.php",
+                        "main"=>'false',
+                        "permission"=>[
+                            'employee'       =>$jatbi->lang("Nhân viên"),
+                        ]
+                    ],
             ],
         ],
     ];
