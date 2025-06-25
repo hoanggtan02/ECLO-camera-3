@@ -782,49 +782,30 @@ function handleFormData(formData, dataFormString, $this) {
 }
 
 function handleModalOrOffcanvas(type, $url, multi, $this) {
-    $.ajax({
-        type: 'GET',
-        url: $url,
-        dataType: 'json',
-        success: function(response) {
-            if (response && response.status === 'error') {
-                swal_error(response.content);
-                $this.removeAttr('disabled');
-                return;
-            }
-            if (response && response.content) {
-                const modalContent = $(response.content);
-                const viewClass = multi ? `${type}-view-${multi}` : `${type}-views`;
+    let viewClass = `${type}-view${multi ? '-' + multi : '-views'}`;
+    if (!$(`.${viewClass}`).length) $('<div>').addClass(viewClass).appendTo('body');
 
-                if (!multi) {
-                    $(`.${type}-views`).remove();
-                }
-                $('body').append(modalContent);
+    if (!$url) return;
 
-                const $target = modalContent.is(`.${type}`) ? modalContent : modalContent.find(`.${type}`);
-                
-                if (type === 'modal') {
-                    $target.modal('show');
-                } else if (type === 'offcanvas') {
-                    $target.offcanvas('show');
-                }
-
-                $target.on(`hidden.bs.${type}`, function () {
-                    $(this).closest(`.${viewClass}`).remove();
-                });
-            } else {
-                 console.error("Response không hợp lệ hoặc thiếu content.");
-            }
-             $this.removeAttr('disabled');
-        },
-        error: function(xhr) {
-            console.error('Lỗi AJAX:', xhr.responseText);
-            swal_error('Lỗi tải nội dung từ server.');
-            $this.removeAttr('disabled');
+    $(`.${viewClass}`).load($url, function (response, status) {
+        if (status === "error") {
+            $(`.${viewClass}`).remove();
+            swal_error('ERROR');
+        } else {
+            let $target = $(`.${viewClass} .${type}-load`);
+            $target[type]('show').on(`shown.bs.${type}`, () => topbar.hide());
+            selected();
+            upload();
+            $('[data-pjax]').on("click", function () {
+                $(`.${viewClass} .${type}-load`).removeClass(type);
+                $(`.${viewClass}`).remove();
+            });
         }
+    }).on(`hidden.bs.${type}`, function () {
+        $(`.${viewClass}`).remove();
+        $this.removeAttr('disabled');
     });
 }
-
 function sendAjaxRequest(url, formData, options, $this) {
     $.ajax({
         type: 'POST',

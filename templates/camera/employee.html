@@ -9,7 +9,7 @@
                 <li class="breadcrumb-item small text-body" aria-current="page"><?=$title?></li>
             </ul>
         </div>
-        </div>
+    </div>
 
     <div class="position-fixed bottom right z-3 dropup" style="--bottom:20px;--right:20px">
         <button class="btn btn-info rounded-circle width height d-flex align-items-center justify-content-center" style="--width:60px;--height:60px;" data-bs-toggle="dropdown">
@@ -31,25 +31,55 @@
     
     <div class="card bg-body bg-opacity-50 shadow border-0 rounded-4">
         <div class="card-body">
+            <div class="custom-buttons d-none">
+                <div class="d-flex align-items-center justify-content-end">
+                    <button class="btn rounded-pill btn-sm btn-primary d-flex align-items-center me-1" 
+                            data-action="modal" 
+                            data-url="employee-add">
+                        <i class="ti ti-plus fs-6 me-1" aria-hidden="true"></i> <?=$jatbi->lang("Thêm")?>
+                    </button>
+                    <button class="btn rounded-pill btn-sm btn-danger d-flex align-items-center" 
+                            data-action="modal" 
+                            data-checkbox="input.checker" 
+                            data-url="employee-delete">
+                        <i class="ti ti-trash fs-6 me-1" aria-hidden="true"></i> <?=$jatbi->lang("Xóa")?>
+                    </button>
+                </div>
+            </div>
+            <div class="custom-buttons d-none">
+                <div class="d-flex align-items-center justify-content-end">
+                    <button class="btn rounded-pill btn-sm btn-primary d-flex align-items-center me-1" 
+                            data-action="modal" 
+                            data-url="employee-add">
+                        <i class="ti ti-plus fs-6 me-1" aria-hidden="true"></i> <?=$jatbi->lang("Thêm")?>
+                    </button>
+                    <button class="btn rounded-pill btn-sm btn-danger d-flex align-items-center" 
+                            data-action="modal" 
+                            data-checkbox="input.checker" 
+                            data-url="employee-delete">
+                        <i class="ti ti-trash fs-6 me-1" aria-hidden="true"></i> <?=$jatbi->lang("Xóa")?>
+                    </button>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table id="datatable" 
-                data-table 
-                class="table align-middle" 
-                data-url="/employee" data-type="POST" 
-                data-server="true" 
-                data-processing="true" 
-                data-page-length="10"
-                data-searching="true"
-                data-paging="true"
-                data-state-save='true'
-                style="width:100%">
+                       data-table 
+                       class="table align-middle" 
+                       data-url="/employee" data-type="POST" 
+                       data-server="true" 
+                       data-processing="true" 
+                       data-page-length="10"
+                       data-searching="true"
+                       data-paging="true"
+                       data-state-save='true'
+                       style="width:100%">
                     <thead>
                         <tr>
-                            <th data-name="checkbox" data-orderable="false" class="text-nowrap text-center" data-class="text-center">
-                                <div class="form-check">
-                                    <input class="form-check-input checkall" type="checkbox" data-checkbox=".employee-checker">
-                                </div>
-                            </th>
+                          <th data-name="checkbox" data-orderable="false" class="text-nowrap text-center" data-visible="true" data-class="text-center">
+                            <div class="form-check">
+                                <input class="form-check-input checkall" type="checkbox" value="" data-checkbox="input.checker">
+                            </div>
+                          </th>
                             <th data-name="sn" data-orderable="true" class="text-nowrap">SN</th>
                             <th data-name="registration_photo" data-orderable="false" class="text-nowrap">Ảnh</th>
                             <th data-name="person_name" data-orderable="true" class="text-nowrap">Họ và tên</th>

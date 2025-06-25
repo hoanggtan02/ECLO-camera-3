@@ -117,7 +117,7 @@
                         "controllers"=>"controllers/core/employee.php",
                         "main"=>'false',
                         "permission"=>[
-                            'employee'       =>$jatbi->lang("Nhân viên"),
+                            'employee'=>$jatbi->lang("Nhân viên"),
                         ]
                     ],
                     'webhook'=>[

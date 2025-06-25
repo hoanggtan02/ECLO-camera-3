@@ -41,11 +41,13 @@ class ComposerStaticInit8c9e68cd509aade1b77a7aed02532c32
             'Psr\\Clock\\' => 10,
             'Psr\\Cache\\' => 10,
             'Predis\\' => 7,
+            'PhpMqtt\\Client\\' => 15,
             'ParagonIE\\ConstantTime\\' => 23,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
         'M' => 
         array (
+            'MyCLabs\\Enum\\' => 13,
             'Minishlink\\WebPush\\' => 19,
             'Medoo\\' => 6,
             'MatthiasMullie\\PathConverter\\' => 29,
@@ -146,6 +148,10 @@ class ComposerStaticInit8c9e68cd509aade1b77a7aed02532c32
         array (
             0 => __DIR__ . '/..' . '/predis/predis/src',
         ),
+        'PhpMqtt\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-mqtt/client/src',
+        ),
         'ParagonIE\\ConstantTime\\' => 
         array (
             0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
@@ -153,6 +159,10 @@ class ComposerStaticInit8c9e68cd509aade1b77a7aed02532c32
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'MyCLabs\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
         ),
         'Minishlink\\WebPush\\' => 
         array (
@@ -207,6 +217,7 @@ class ComposerStaticInit8c9e68cd509aade1b77a7aed02532c32
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
+        'Stringable' => __DIR__ . '/..' . '/myclabs/php-enum/stubs/Stringable.php',
         'Verot\\Upload\\Upload' => __DIR__ . '/..' . '/verot/class.upload.php/src/class.upload.php',
     );
 

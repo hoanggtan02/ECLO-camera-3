@@ -323,31 +323,5 @@
 	        $return .= '</ul>';
 	        return $return;
 	    }
-		public function publishMqttMessage(array $env, string $topic, array $payload): bool
-			{
-				$mqttServer = $env['MQTT_HOST'] ?? 'mqtt.ellm.io';
-				$mqttPort = (int)($env['MQTT_PORT_TCP'] ?? 1883);
-				$mqttUsername = $env['MQTT_USERNAME'] ?? 'eclo';
-				$mqttPassword = $env['MQTT_PASSWORD'] ?? 'Eclo@123';
-				$mqttClientId = 'eclo-web-publisher-' . uniqid();
-
-				try {
-					$mqtt = new MqttClient($mqttServer, $mqttPort, $mqttClientId);
-					$connectionSettings = (new ConnectionSettings)
-						->setUsername($mqttUsername)
-						->setPassword($mqttPassword)
-						->setConnectTimeout(5); 
-					$mqtt->connect($connectionSettings, true);
-					$mqtt->publish($topic, json_encode($payload, JSON_UNESCAPED_UNICODE), 0);
-					$mqtt->disconnect();
-					error_log("✅ MQTT Publish Success to topic [{$topic}]: " . json_encode($payload));
-					return true;
-				} catch (Exception $e) {
-					error_log("❌ MQTT Publish Error: " . $e->getMessage());
-					return false;
-				}
-			}
-
-
 	}
 ?>
